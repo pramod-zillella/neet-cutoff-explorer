@@ -13,10 +13,13 @@ The initial view uses 2025, Osmania Medical College, the **Open allotted-seat ca
 - **Explore a state:** select a state or union territory and one or more courses. Clear the selected courses to include all courses.
 - Change the counselling year, allotted category or displayed metric in any view.
 - **Allotment quota:** open the dropdown and tick one or more quotas. Use **Clear selection** before choosing a specific combination, or **Select all** to restore all quotas. Clearing every quota shows no results until you select one. Each selected quota keeps its own cutoff rows.
-- Click a round heading to sort. Use result search to narrow the table. Pagination limits the screen to 40 rows; CSV export includes **all matching rows**, with opening rank, closing rank and count for every round.
+- Scroll inside the results table to browse continuously. More rows appear automatically near the bottom, and the round headings stay visible. The footer shows how many results are loaded; **Back to top** returns to the beginning. Changing filters or sorting restarts the table at the top.
+- Click a round heading to sort. Use result search to search **all matching results**, including rows you have not scrolled to. CSV export includes **all matching rows**, with opening rank, closing rank and count for every round.
 - Once hosted, **Copy view link** shares the selected filters. A link to a local file or localhost only works on your own computer.
 
 Quota choices stay selected when changing the year or switching views. **Reset** restores all quotas. Existing links containing a single quota still work. For implementation details and instructions to update an existing GitHub Pages site, see [Quota multi-select changes](QUOTA_MULTISELECT_CHANGES.md).
+
+The table uses continuous scrolling instead of page numbers. See [Continuous scrolling changes](CONTINUOUS_SCROLL_CHANGES.md) for the behavior and GitHub update instructions.
 
 ## Share with GitHub Pages
 

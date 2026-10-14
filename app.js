@@ -17,8 +17,8 @@
   const defaultBranch = data.branches.find(b => b.name === "MD · General Medicine") || data.branches[0];
   const comparison = [defaultCollege, data.colleges.find(c => /gandhi medical college/i.test(c.name) && c.state === defaultCollege.state), data.colleges.find(c => /kakatiya medical/i.test(c.name))].filter(Boolean).map(c => c.id);
   const defaults = () => ({view:"college", year:data.years[0], college:defaultCollege.id, colleges:comparison.slice(), branch:defaultBranch.id, state:defaultCollege.state, branches:[defaultBranch.id], quotas:data.quotas.slice(), category:"Open", metric:"closing", search:"", sort:"name", direction:"asc"});
-  let filters = defaults(), page = 1, rows = [], toastTimer;
-  const pageSize = 40;
+  let filters = defaults(), rows = [], renderedRows = 0, scrollFrame = 0, toastTimer;
+  const rowBatchSize = 100;
   const available = new Map(data.years.map(year => [year, {colleges:new Set(), branches:new Set()}]));
   for (const row of data.rows) {
     available.get(row[0]).colleges.add(data.colleges[row[2]].id);
@@ -157,7 +157,7 @@
     collegePicker.refresh(); comparePicker.refresh(); branchPicker.refresh();
   }
   function change(name, value) {
-    filters[name] = value; page = 1;
+    filters[name] = value;
     if (name === "view") {filters.search = ""; filters.sort = "name"; filters.direction = "asc";}
     if (["year", "view"].includes(name)) syncControls();
     if (name === "quotas") syncQuotas();
@@ -178,38 +178,56 @@
     $("empty").hidden = Boolean(rows.length); $("table-container").hidden = !rows.length;
     $("empty-message").textContent = !filters.quotas.length ? "Choose at least one allotment quota, or use Select all to include every quota." : filters.view === "compare" && !filters.colleges.length ? "Choose at least one college in the filters to start comparing." : "No allotments match these selections in " + filters.year + ". Try all quotas, another allotted category, or a different course. Some institutions appear under separate source addresses.";
     $("clear-result-search").hidden = !filters.search;
-    const totalPages = Math.max(1, Math.ceil(rows.length / pageSize)); page = Math.min(page, totalPages);
-    const start = (page - 1) * pageSize;
+    cancelAnimationFrame(scrollFrame); scrollFrame = 0; renderedRows = 0;
     const sortButton = (field, text) => `<button data-sort="${field}" aria-label="Sort by ${text}">${text}<span class="sort-arrow" aria-hidden="true">${filters.sort === field ? (filters.direction === "asc" ? "↑" : "↓") : "↕"}</span></button>`;
     const ariaSort = field => filters.sort === field ? (filters.direction === "asc" ? "ascending" : "descending") : "none";
     const firstHeader = filters.view === "college" ? "Branch / course" : "College / course";
     const metricLabel = {closing:"Closing rank", range:"Opening – closing rank", count:"Allotment count"}[filters.metric];
-    $("table-container").innerHTML = `<table><caption class="skip-link">${escape(metricLabel)} by counselling round for ${filters.year}</caption><thead><tr><th scope="col" aria-sort="${ariaSort("name")}">${sortButton("name",firstHeader)}</th><th scope="col">Quota / category</th>${data.rounds.map((name,index) => `<th scope="col" class="round ${index === 3 ? "last" : ""}" aria-sort="${ariaSort("round"+index)}">${sortButton("round"+index,name)}</th>`).join("")}</tr></thead><tbody>${rows.slice(start, start + pageSize).map(row => {
+    $("table-container").innerHTML = `<table class="cutoff-table ${filters.metric === "range" ? "range-table" : ""}" aria-rowcount="${rows.length + 1}"><colgroup><col class="label-column"><col class="quota-column"><col span="4" class="rank-column"></colgroup><caption class="skip-link">${escape(metricLabel)} by counselling round for ${filters.year}</caption><thead><tr aria-rowindex="1"><th scope="col" aria-sort="${ariaSort("name")}">${sortButton("name",firstHeader)}</th><th scope="col">Quota / category</th>${data.rounds.map((name,index) => `<th scope="col" class="round ${index === 3 ? "last" : ""}" aria-sort="${ariaSort("round"+index)}">${sortButton("round"+index,name)}</th>`).join("")}</tr></thead><tbody id="cutoff-rows"></tbody></table>`;
+    $("table-container").scrollTop = 0;
+    appendRows();
+    writeHash();
+  }
+  function rowMarkup(row, rowIndex) {
       const primary = filters.view === "college" ? row.branch.name : row.college.name;
       const secondary = filters.view === "college" ? "" : row.college.state + (filters.view === "state" ? " · " + row.branch.name : "");
-      return `<tr><td title="${escape(row.college.address)}"><span class="primary-label">${escape(primary)}</span>${secondary ? `<span class="secondary-label">${escape(secondary)}</span>` : ""}</td><td class="group-cell">${escape(row.quota)}<br><span class="category-tag">${escape(row.category)}</span></td>${row.rounds.map((round,index) => {
+      return `<tr aria-rowindex="${rowIndex + 2}"><td title="${escape(row.college.address)}"><span class="primary-label">${escape(primary)}</span>${secondary ? `<span class="secondary-label">${escape(secondary)}</span>` : ""}</td><td class="group-cell">${escape(row.quota)}<br><span class="category-tag">${escape(row.category)}</span></td>${row.rounds.map((round,index) => {
         if (!round) return `<td class="rank-cell ${index === 3 ? "last" : ""}" aria-label="No matching allotment"><span class="rank-missing">—</span></td>`;
         const value = filters.metric === "count" ? format(round.count) : filters.metric === "range" ? `${format(round.opening)} – ${format(round.closing)}` : format(round.closing);
         const tooltip = `Opening rank ${format(round.opening)}; closing rank ${format(round.closing)}; ${format(round.count)} allotments`;
         const caption = filters.metric === "count" ? `close ${format(round.closing)}` : `${format(round.count)} allotted`;
         return `<td class="rank-cell ${index === 3 ? "last" : ""}" title="${tooltip}"><span class="rank-value">${value}</span><span class="rank-caption">${caption}</span></td>`;
       }).join("")}</tr>`;
-    }).join("")}</tbody></table>`;
-    $("row-count").textContent = rows.length ? `${format(start + 1)}–${format(Math.min(start + pageSize, rows.length))} of ${format(rows.length)} rows` : "0 matching rows";
-    $("page-label").textContent = `${page} / ${totalPages}`;
-    $("previous").disabled = page <= 1; $("next").disabled = page >= totalPages;
-    writeHash();
+  }
+  function appendRows() {
+    const end = Math.min(renderedRows + rowBatchSize, rows.length);
+    $("cutoff-rows").insertAdjacentHTML("beforeend", rows.slice(renderedRows, end).map((row, index) => rowMarkup(row, renderedRows + index)).join(""));
+    renderedRows = end;
+    $("row-count").textContent = !rows.length ? "0 matching rows" : renderedRows < rows.length ? `Showing ${format(renderedRows)} of ${format(rows.length)} rows` : `${format(rows.length)} matching rows`;
+    $("scroll-hint").textContent = !rows.length ? "" : renderedRows < rows.length ? "Scroll for more rows" : "All results loaded";
+    $("back-to-top").hidden = $("table-container").scrollTop < 200;
   }
   for (const [id, name] of [["year","year"],["category","category"],["state","state"],["metric","metric"],["compare-branch","branch"]]) $(id).addEventListener("change", event => change(name, id === "year" ? Number(event.target.value) : event.target.value));
   for (const button of document.querySelectorAll("[data-view]")) button.addEventListener("click", () => change("view", button.dataset.view));
   $("result-search").addEventListener("input", event => change("search", event.target.value));
   $("clear-result-search").addEventListener("click", () => {$("result-search").value = ""; change("search", "");});
-  $("reset").addEventListener("click", () => {const view = filters.view, year = filters.year; filters = {...defaults(), view, year}; page = 1; for (const picker of [collegePicker,comparePicker,branchPicker]) picker.input.value = ""; syncControls(); render();});
-  $("previous").addEventListener("click", () => {page--; render(); $("table-container").scrollTop = 0;});
-  $("next").addEventListener("click", () => {page++; render(); $("table-container").scrollTop = 0;});
+  $("reset").addEventListener("click", () => {const view = filters.view, year = filters.year; filters = {...defaults(), view, year}; for (const picker of [collegePicker,comparePicker,branchPicker]) picker.input.value = ""; syncControls(); render();});
+  $("table-container").addEventListener("scroll", () => {
+    if (scrollFrame) return;
+    scrollFrame = requestAnimationFrame(() => {
+      scrollFrame = 0;
+      const container = $("table-container");
+      $("back-to-top").hidden = container.scrollTop < 200;
+      if (renderedRows < rows.length && container.scrollHeight - container.scrollTop - container.clientHeight < 400) appendRows();
+    });
+  }, {passive:true});
+  $("back-to-top").addEventListener("click", () => {
+    $("table-container").scrollTop = 0;
+    $("table-container").focus({preventScroll:true});
+  });
   $("table-container").addEventListener("click", event => {
     const button = event.target.closest("[data-sort]"); if (!button) return;
-    const field = button.dataset.sort; filters.direction = filters.sort === field && filters.direction === "asc" ? "desc" : "asc"; filters.sort = field; page = 1; render();
+    const field = button.dataset.sort; filters.direction = filters.sort === field && filters.direction === "asc" ? "desc" : "asc"; filters.sort = field; render();
   });
   $("export").addEventListener("click", () => {
     const blob = new Blob([core.csv(rows, filters.year)], {type:"text/csv;charset=utf-8"});
@@ -222,7 +240,7 @@
     try {await navigator.clipboard.writeText(location.href); toast("View link copied. The link includes your selected filters.");}
     catch {toast("Copy the address from your browser to share this exact view.");}
   });
-  window.addEventListener("hashchange", () => {readHash(); page = 1; syncControls(); render();});
+  window.addEventListener("hashchange", () => {readHash(); syncControls(); render();});
   const quality = data.quality;
   $("data-quality").innerHTML = `<p><strong>Dataset coverage:</strong> ${format(quality.includedAllotments)} allotment events, ${format(data.colleges.length)} institution address records and ${data.branches.length} courses. ${quality.unknownStates.length} institution records have no identifiable state; ${quality.rejected.length} allotment rows were rejected during validation.</p><table class="quality-table"><thead><tr><th scope="col">Year</th><th scope="col">Round</th><th scope="col">Allotments included</th></tr></thead><tbody>${quality.sources.map(s => `<tr><td>${s.year}</td><td>${escape(s.round)}</td><td>${format(s.included)}</td></tr>`).join("")}</tbody></table><p>Sources: <code>2024_Seat_Allocation.xlsx</code> and <code>2025_Seat_Allocation.xlsx</code>, using each workbook’s Round 1, Round 2, Round 3 and Stray sheets.</p>`;
   readHash(); syncControls(); render();

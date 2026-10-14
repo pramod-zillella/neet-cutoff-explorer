@@ -50,7 +50,7 @@ An all-quota selection is written as `quota=all`; an empty selection is written 
 
 **Interaction and accessibility:** native checkboxes support keyboard selection. The dropdown uses native `<details>` / `<summary>` controls, keeps focus on the selected checkbox during updates, and closes on Escape with focus returned to the summary. Clearing the selection never silently restores all quotas.
 
-**Assets:** `index.html` references `styles.css`, `core.js` and `app.js` with the suffix `?v=quota-multiselect-1`. Keep the actual filenames unchanged when uploading. The version suffix helps visitors retrieve the updated assets after deployment.
+**Assets:** `index.html` references styles and scripts with version parameters to help visitors retrieve updated assets after deployment. Keep the actual filenames unchanged when uploading. The later continuous-scrolling update uses `?v=continuous-scroll-1` for `styles.css` and `app.js`; `core.js` retains `?v=quota-multiselect-1`. See [Continuous scrolling changes](CONTINUOUS_SCROLL_CHANGES.md).
 
 ## Update your existing GitHub Pages site
 
