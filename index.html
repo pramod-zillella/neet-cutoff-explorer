@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c6659">
+  <meta name="description" content="Explore NEET PG closing ranks by college, course, state and counselling round for 2024 and 2025.">
+  <title>NEET PG · Cutoff Explorer</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data/cutoffs.js"></script>
+  <script defer src="core.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to results</a>
+  <header class="topbar">
+    <a href="./" class="brand" aria-label="Cutoff Explorer home"><span class="brand-mark" aria-hidden="true">n<span>e</span></span><span>NEET PG <span class="brand-divider">/</span> <strong>Cutoff Explorer</strong></span></a>
+    <div class="header-actions"><span class="source-badge"><i></i> 2024 & 2025 allocations</span><button id="share" class="button secondary" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15l6-6M8 17H6a4 4 0 0 1 0-8h3m6 6h3a4 4 0 0 0 0-8h-2"/></svg>Copy view link</button></div>
+  </header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">YOUR NEXT CHAPTER, IN PERSPECTIVE</p><h1>Find your place.<br class="mobile-break"> Know the cutoffs.</h1><p class="intro-copy">Explore colleges and courses with round-by-round allotment ranks.</p></div><div class="year-control"><label for="year">Counselling year</label><select id="year" disabled><option>2025</option></select></div></section>
+    <nav class="view-tabs" aria-label="Explore by"><button data-view="college" class="active" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10h14M6 10v9m6-9v9m6-9v9M3 20h18"/></svg>College overview</button><button data-view="compare" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V9h6v11M14 20V4h6v16M2 20h20"/></svg>Compare colleges</button><button data-view="state" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg>Explore a state</button></nav>
+    <div class="workspace">
+      <aside class="filters" aria-label="Dashboard filters">
+        <div class="filter-heading"><h2>Refine your view</h2><button id="reset" class="text-button">Reset</button></div>
+        <div id="college-panel" class="view-panel"><label class="field-label" for="college-search">College</label><div id="college-picker"></div><p class="field-help">Search by college, city or address.</p></div>
+        <div id="compare-panel" class="view-panel" hidden><label class="field-label" for="compare-search">Colleges to compare</label><div id="compare-picker"></div><div class="field"><label for="compare-branch">Branch / course</label><select id="compare-branch"></select></div></div>
+        <div id="state-panel" class="view-panel" hidden><div class="field"><label for="state">State / union territory</label><select id="state"></select></div><label class="field-label" for="branch-search">Branches / courses</label><div id="branch-picker"></div><p class="field-help">Choose one or more. Leave empty to see all branches.</p></div>
+        <div class="filter-divider"></div>
+        <div class="field"><label for="category">Allotted category</label><select id="category"></select><p class="field-help">The category of the allotted seat.</p></div>
+        <div class="field"><label for="quota">Allotment quota</label><select id="quota"></select></div>
+        <div class="field"><label for="metric">Show in round columns</label><select id="metric"><option value="closing">Closing rank</option><option value="range">Opening – closing rank</option><option value="count">Allotment count</option></select></div>
+        <div class="help-card"><span class="info-icon" aria-hidden="true">i</span><div><strong>Reading a cutoff</strong><p>Closing rank is the highest rank allotted in that round. A smaller rank means a more competitive cutoff.</p></div></div>
+      </aside>
+      <section class="content" id="results" tabindex="-1" aria-label="Cutoff results">
+        <div class="stats" id="stats"><div class="stat"><span>Loading allocation data…</span></div></div>
+        <div class="results-card">
+          <div class="results-heading"><div><p class="eyebrow" id="results-eyebrow">COLLEGE OVERVIEW</p><h2 id="results-title">Preparing your view</h2><p id="results-description" class="muted">Reading the bundled workbook aggregates.</p></div><button id="export" class="button secondary" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></svg>Export CSV</button></div>
+          <div class="table-toolbar"><div id="active-filters" class="active-filters"></div><label class="result-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input id="result-search" type="search" placeholder="Search these results" aria-label="Search results"></label></div>
+          <div id="table-container" class="table-container" role="region" aria-label="Round-by-round cutoff table" tabindex="0"></div>
+          <div id="empty" class="empty" hidden><div class="empty-mark" aria-hidden="true">⌕</div><h3>No matching allotments</h3><p id="empty-message">Try another category, quota or course.</p><button class="button secondary" id="clear-result-search" hidden>Clear result search</button></div>
+          <div class="table-footer"><span id="row-count" role="status" aria-live="polite"></span><div class="pagination"><button id="previous" aria-label="Previous page">←</button><span id="page-label"></span><button id="next" aria-label="Next page">→</button></div></div>
+        </div>
+        <p class="table-note"><span class="legend-dot"></span><strong>—</strong> means no matching allotment in that round. Quotas and seat categories are kept in separate rows.</p>
+        <details class="methodology"><summary>About the data & calculation <span>Sources, coverage and limitations</span></summary><div class="methodology-body"><p><strong>Cutoffs use the workbook Rank column.</strong> Closing = maximum rank; opening = minimum rank, grouped by year, round, institute, course, allotted quota and allotted category. Counts represent allotment events, not unique candidates or seats across rounds.</p><p>Only each sheet’s current-round allotment columns are used. Earlier-round history, blank allotments and “No Upgradation” rows are excluded. A later round’s cutoff is not cumulative and does not represent the final admitted cohort. Category refers to the allotted seat, not the candidate’s personal category.</p><p>Spacing and punctuation variants in courses and institution addresses are combined. Degree types stay separate. Quota codes are expanded; management / paid / self-financed merit labels are grouped. Changed addresses are combined only when the normalized institution name, state and PIN code match exactly. Other address differences remain separate; inspect the address if names look similar.</p><p>States are extracted from institute addresses, including known state spellings and abbreviations. Missing states are recovered only when the same institution name has exactly one other source address with a known state; the remainder appear under “Unknown (not stated)”. This is the coverage of the supplied workbooks, not a complete catalogue of state counselling.</p><div id="data-quality"></div><p>Historical allotments are a reference for comparing options. Verify admission decisions against the relevant counselling authority’s published result.</p><p><a href="data/quality-report.json" target="_blank" rel="noopener">View the data quality report</a></p></div></details>
+      </section>
+    </div>
+    <footer class="page-footer"><span>NEET PG · Cutoff Explorer</span><span>Built from your 2024 & 2025 seat-allocation workbooks.</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">Enable JavaScript to filter and compare cutoff ranks.</p></noscript>
+</body>
+</html>

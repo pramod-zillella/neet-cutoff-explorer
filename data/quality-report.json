@@ -1,0 +1,831 @@
+{
+  "sources": [
+    {
+      "year": 2024,
+      "round": "Round 1",
+      "workbook": "2024_Seat_Allocation.xlsx",
+      "sheet": "2024_Round_1",
+      "sourceRows": 24671,
+      "included": 24671
+    },
+    {
+      "year": 2024,
+      "round": "Round 2",
+      "workbook": "2024_Seat_Allocation.xlsx",
+      "sheet": "2024_Round_2",
+      "sourceRows": 31490,
+      "noCurrentAllotment": 15308,
+      "included": 16182
+    },
+    {
+      "year": 2024,
+      "round": "Round 3",
+      "workbook": "2024_Seat_Allocation.xlsx",
+      "sheet": "2024_Round_3",
+      "sourceRows": 36583,
+      "noCurrentAllotment": 22592,
+      "included": 13991
+    },
+    {
+      "year": 2024,
+      "round": "Stray",
+      "workbook": "2024_Seat_Allocation.xlsx",
+      "sheet": "2024_Round_Stray",
+      "sourceRows": 2331,
+      "included": 2331
+    },
+    {
+      "year": 2025,
+      "round": "Round 1",
+      "workbook": "2025_Seat_Allocation.xlsx",
+      "sheet": "2025_Round_1",
+      "sourceRows": 26889,
+      "included": 26889
+    },
+    {
+      "year": 2025,
+      "round": "Round 2",
+      "workbook": "2025_Seat_Allocation.xlsx",
+      "sheet": "2025_Round_2",
+      "sourceRows": 35023,
+      "noCurrentAllotment": 14236,
+      "included": 20787
+    },
+    {
+      "year": 2025,
+      "round": "Round 3",
+      "workbook": "2025_Seat_Allocation.xlsx",
+      "sheet": "2025_Round_3",
+      "sourceRows": 41694,
+      "noCurrentAllotment": 23021,
+      "included": 18673
+    },
+    {
+      "year": 2025,
+      "round": "Stray",
+      "workbook": "2025_Seat_Allocation.xlsx",
+      "sheet": "2025_Round_Stray",
+      "sourceRows": 2798,
+      "included": 2798
+    }
+  ],
+  "includedAllotments": 126322,
+  "aggregateRows": 80469,
+  "colleges": 1896,
+  "branches": 100,
+  "rejected": [],
+  "unknownStates": [
+    {
+      "id": "c6a7c973a0795",
+      "name": "BHAARATH MEDICAL COLLEGE AND HOSPITAL,SELAIYUR",
+      "address": "BHAARATH MEDICAL COLLEGE AND HOSPITAL,SELAIYUR,173, AGARAM MAIN ROAD,SELAIYUR,CHENNAI"
+    },
+    {
+      "id": "cb5ce30bc9dcc",
+      "name": "CHIKKAMAGALURU INSTITUTE OF MEDICAL SCIENCE, KARNATA",
+      "address": "CHIKKAMAGALURU INSTITUTE OF MEDICAL SCIENCE,KARNATA,TEGUR, CHIKKAMAGALURU TALUK AND DISTRICT, KARNA???? -577133"
+    },
+    {
+      "id": "ce42551265659",
+      "name": "District Civil Hospital",
+      "address": "District Civil Hospital, , H.no 12 Doctors Colony Opposite shivi ultrasound"
+    },
+    {
+      "id": "c926c00b9389e",
+      "name": "Government Medical College Kanth Bagh Baramulla",
+      "address": "Government Medical College Kanth Bagh Baramulla , Kanth Bagh Baramulla"
+    },
+    {
+      "id": "c178048126279",
+      "name": "GOVERNMENT MEDICAL COLLEGE MACHILIPATNAM",
+      "address": "GOVERNMENT MEDICAL COLLEGE MACHILIPATNAM,KARA AGRAHARAM NEAR RADAR CENTRE, CHILAKALPUDI, MACHILIPATNAM"
+    },
+    {
+      "id": "ce023e940f6bb",
+      "name": "GOVERNMENT MEDICAL COLLEGE, FATEHPUR",
+      "address": "GOVERNMENT MEDICAL COLLEGE, FATEHPUR ,Amar Shaheed Jodha Singh Ataiya Thakur Dariyao Singh Medical College (A.S.M.C.), Fatehpur"
+    },
+    {
+      "id": "c790efce14957",
+      "name": "Government Medical College, Kathua",
+      "address": "Government Medical College, Kathua,NH1A, Near Kalibari, Kathua"
+    },
+    {
+      "id": "caccbe300bb9b",
+      "name": "Government Medical College, Rajamahendravaram",
+      "address": "Government Medical College, Rajamahendravaram,57-5- 20, Ramalayam Street, R.V.Nagar, Mallikarjuna Nagar, Rajamahendravaram, East Godavari District, Andhra"
+    },
+    {
+      "id": "cd3b268212a2d",
+      "name": "Government MEdical College, Ramagundam",
+      "address": "Government MEdical College, Ramagundam,Government Medical College Ramagundam 92, 95, 96 Malkapur Village Ramagundam Mandal Pedapalli"
+    },
+    {
+      "id": "c7c3ce897b379",
+      "name": "HAVERI INSTITUTE OF MEDICAL SCIENCES",
+      "address": "HAVERI INSTITUTE OF MEDICAL SCIENCES,DEVAGIRI YELLAPURA, DC OFFICE ROAD,, HAVERI"
+    },
+    {
+      "id": "c25c89f7d19d7",
+      "name": "Institute of integrated Medical Sciences (Govt.Medical College), Palakkad",
+      "address": "Institute of integrated Medical Sciences (Govt.Medical College), Palakkad,East Yakkara Kunnathurmedu"
+    },
+    {
+      "id": "c9bb50f89e298",
+      "name": "Lakhimpur Medical College",
+      "address": "Lakhimpur Medical College,Chowkham, Saboti,Post Office â€“ Saboti, Police Station â€“ North Lakhimpur"
+    },
+    {
+      "id": "c6e4849c3423b",
+      "name": "NANDI MEDICAL COLLEGE AND REASERCH INSTITUTEE",
+      "address": "NANDI MEDICAL COLLEGE AND REASERCH INSTITUTEE ,AROOR VILLAGE, PERESANDRA POST, CHIKKABALLAPURA"
+    },
+    {
+      "id": "c255fa7fba231",
+      "name": "SAL Hospital and Medical Institute",
+      "address": "SAL Hospital and Medical Institute,,NEAR TAKSHASHILA"
+    },
+    {
+      "id": "c45259454b65c",
+      "name": "Soban Singh Jeena Government Institute of Medical Sciences & Research, Almora",
+      "address": "Soban Singh Jeena Government Institute of Medical Sciences & Research, Almora,,Pandeykhola,Near Vikas Bhawan, Almora , Pin - 263601"
+    }
+  ],
+  "addressMerges": [
+    {
+      "id": "cd8d97c3dc9eb",
+      "name": "Apollo Rajshree Hospitals Pvt Ltd, Scheme No 74 C, Sector D, Vijay Nagar Indore, Madhya Pradesh-452010",
+      "addresses": [
+        "Apollo Rajshree Hospitals Pvt Ltd, Scheme No 74 C, Sector D, Vijay Nagar Indore, Madhya Pradesh-452010,",
+        "Apollo Rajshree Hospitals Pvt Ltd, Scheme No 74 C, Sector D, Vijay Nagar Indore, Madhya Pradesh-452010 , Scheme No. 74 C, Sector D, Vijay Nagar, Indore, 452010, M.P."
+      ]
+    },
+    {
+      "id": "c436dfceedacc",
+      "name": "Armed Forces Medical College",
+      "addresses": [
+        "Armed Forces Medical College , SOLAPUR ROAD NEAR RACE COURSE OPPOSITE OLD COMMAND HOSPITAL, WANOWARI PUNE, Maharashtra, 411040",
+        "Armed Forces Medical College , SOLAPUR ROAD NEAR RACE COURSE OPPOSITE OLD COMMAND HOSPITAL, WANOWARI PUNR, Maharashtra, 411040"
+      ]
+    },
+    {
+      "id": "c94fe8cd63072",
+      "name": "ARPA Medcity Hospital and Research Institute, Vypar Vihar Near SBI Main Road, Bilaspur, Chhattisgarh-495001",
+      "addresses": [
+        "ARPA Medcity Hospital and Research Institute, Vypar Vihar Near SBI Main Road, Bilaspur, Chhattisgarh-495001,",
+        "ARPA Medcity Hospital and Research Institute, Vypar Vihar Near SBI Main Road, Bilaspur, Chhattisgarh-495001,Elite Medcity Hospital Near SBI Comercial Branch Vyapar Vihar Main Road Bilaspur"
+      ]
+    },
+    {
+      "id": "c72864b5a3160",
+      "name": "Base Hospital Delhi Cantt",
+      "addresses": [
+        "Base Hospital Delhi Cantt , BASE HOSPITAL DELHI CANTT, Delhi (NCT), 110010",
+        "Base Hospital, , Delhi Cantt.,, Delhi-110010"
+      ]
+    },
+    {
+      "id": "c5e98826d8a85",
+      "name": "Central Super Speciality Hospital,Bihar-",
+      "addresses": [
+        "Central Super Speciality Hospital,Bihar-,East Central Railway Near Karbigahiya Railway Station, Karbigahiya Patna Bihar , Bihar-800001",
+        "Central Super Speciality Hospital,Bihar- , mdcsshecr@gmail.com, Bihar, 800001"
+      ]
+    },
+    {
+      "id": "cf129f523c0a9",
+      "name": "CIVIL HOSPITAL MALERKOTLA, RAILWAY ROAD MALERKOTLA, Punjab-148023",
+      "addresses": [
+        "CIVIL HOSPITAL MALERKOTLA, RAILWAY ROAD MALERKOTLA, Punjab-148023,",
+        "CIVIL HOSPITAL MALERKOTLA, RAILWAY ROAD MALERKOTLA, Punjab- 148023 , CIVIL HOSPITAL MALERKOTLA Railway Road Malerkotla"
+      ]
+    },
+    {
+      "id": "cb9c2ad5231de",
+      "name": "Command Hospital (Western Command), Chandimandir",
+      "addresses": [
+        "Command Hospital (Western Command), Chandimandir , Command Hospital, Chandimandir Panchkula Haryana, Haryana, 134107",
+        "Command Hospital , Western Command, Chandimandir, Haryana-134107"
+      ]
+    },
+    {
+      "id": "cf506ca59cf41",
+      "name": "District Headquarter Hospital, Kalahandi, Bhawanipatna, Odisha-760001",
+      "addresses": [
+        "District Headquarter Hospital, Kalahandi, Bhawanipatna, Odisha-760001 ,",
+        "District Headquarter Hospital, Kalahandi, Bhawanipatna, Odisha-760001,District headquarter hospital kalahandi near sbi bank"
+      ]
+    },
+    {
+      "id": "c85aa941b5c4b",
+      "name": "DISTRICT HEADQUARTERS HOSPITAL, BALANGIR, OFFICE OF THE DMO(MS)- CUM-SUPERINTENDENT, SUDPADA, BALANGIR, Odisha-767001",
+      "addresses": [
+        "DISTRICT HEADQUARTERS HOSPITAL, BALANGIR, OFFICE OF THE DMO(MS)- CUM-SUPERINTENDENT, SUDPADA, BALANGIR, Odisha-767001 ,",
+        "DISTRICT HEADQUARTERS HOSPITAL, BALANGIR, OFFICE OF THE DMO(MS)-CUM-SUPERINTENDENT, SUDPADA, BALANGIR, Odisha-767001,DHH, Balangir, At: Radharanipara, Post: Balangir"
+      ]
+    },
+    {
+      "id": "c9a1993a06d82",
+      "name": "DISTRICT HEADQUATERS HOSPITAL, KHORDHA, KHORDHA, Odisha-752055",
+      "addresses": [
+        "DISTRICT HEADQUATERS HOSPITAL, KHORDHA, KHORDHA, Odisha-752055 ,",
+        "DISTRICT HEADQUATERS HOSPITAL, KHORDHA, KHORDHA, Odisha-752055,District Headquarter Hospital, Near Model police station, khordha"
+      ]
+    },
+    {
+      "id": "cd4eabccb9a33",
+      "name": "DISTRICT HOSPITAL AND EPIDEMIOLOGICAL DISEASES HOSPITAL, MYSURU, KRS ROAD, METAGALLI, MYSURU, Karnataka-570016",
+      "addresses": [
+        "DISTRICT HOSPITAL AND EPIDEMIOLOGICAL DISEASES HOSPITAL, MYSURU, KRS ROAD, METAGALLI, MYSURU, Karnataka-570016,",
+        "DISTRICT HOSPITAL AND EPIDEMIOLOGICAL DISEASES HOSPITAL, MYSURU, KRS ROAD, METAGALLI, MYSURU, Karnataka-570016 , DISTRICT HOSPITAL AND EPIDEMIOLOGICAL DISEASES HOSPITAL, KRS ROAD, METAGALLI, MYSURU - 570016 Karnataka State."
+      ]
+    },
+    {
+      "id": "c707fd5fe61c3",
+      "name": "District Hospital",
+      "addresses": [
+        "District Hospital, ,GOVT. HOSPITAL, PLACE ROAD ,SIROHI, Rajasthan, 307001",
+        "District Hospital, SIROHI,GOVT. HOSPITAL, PLACE ROAD ,SIROHI, Rajasthan, 307001"
+      ]
+    },
+    {
+      "id": "cd46a2b5d90ad",
+      "name": "Distt. Hospital Shivpuri, Distt. Hospital Shivpuri Madhya Pradesh, Madhya Pradesh-473551",
+      "addresses": [
+        "Distt. Hospital Shivpuri, Distt. Hospital Shivpuri Madhya Pradesh, Madhya Pradesh- 473551,",
+        "Distt. Hospital Shivpuri, Distt. Hospital Shivpuri Madhya Pradesh, Madhya Pradesh-473551,Near Pologround shivpuri"
+      ]
+    },
+    {
+      "id": "cd586c753490b",
+      "name": "ESIC Model Hospital, Gujarat",
+      "addresses": [
+        "ESIC Model Hospital, Gujarat,Hardash Nagar Police Choki Bapunagar Ahmedabad, Gujarat-380024",
+        "ESIC Model Hospital, Gujarat,ms-bapunagar.gj@esic.nic.in, Gujarat, 380024"
+      ]
+    },
+    {
+      "id": "c301f78536afb",
+      "name": "EYE CARE AZAMGARH PVT LTD, SARAY MANDRAJ BHAWARNATH, AZAMGARH, Uttar Pradesh-276001",
+      "addresses": [
+        "EYE CARE AZAMGARH PVT LTD, SARAY MANDRAJ BHAWARNATH, AZAMGARH, Uttar Pradesh-276001,",
+        "EYE CARE AZAMGARH PVT LTD, SARAY MANDRAJ BHAWARNATH, AZAMGARH, Uttar Pradesh-276001,EYE CARE AZAMGARH PVT LTD,SARAY MANDRAJ BHAWARNATH, AZAMGARH Uttar Pradesh"
+      ]
+    },
+    {
+      "id": "c9538c13fd04d",
+      "name": "FUTELA HOSPITAL, 18/1 D1 D2 CIVIL LINE, NAINITAL ROAD, RUDRAPUR, Uttaranchal-263153",
+      "addresses": [
+        "FUTELA HOSPITAL, 18/1 D1 D2 CIVIL LINE, NAINITAL ROAD, RUDRAPUR, Uttaranchal-263153,",
+        "FUTELA HOSPITAL, 18/1 D1 D2 CIVIL LINE, NAINITAL ROAD, RUDRAPUR, Uttaranchal-263153,18/1 D1 D2 CIVIL LINE, NAINITAL ROAD RUDRAPUR (UDHAM SINGH NAGAR)"
+      ]
+    },
+    {
+      "id": "c3bac6f8a40c8",
+      "name": "Government General Hospital, Kerala",
+      "addresses": [
+        "Government General Hospital, Kerala,Beach (PO), Kozhikode Kerala , Kerala-673032",
+        "Government General Hospital, Kerala,Government General Hospital Red Cross Road Kozhikode Beach., Kerala, 673032"
+      ]
+    },
+    {
+      "id": "c6dd9a02e1ec3",
+      "name": "GOVERNMENT MEDICAL COLLEGE KADAPA (FORMERLY RAJIV GANDHI INSTITUTE OF MEDICAL SCIENCES, KADAPA)",
+      "addresses": [
+        "GOVERNMENT MEDICAL COLLEGE KADAPA (FORMERLY RAJIV GANDHI INSTITUTE OF MEDICAL SCIENCES, KADAPA),GOVERNMENT MEDICAL COLLEGE KADAPA (FORMERLY RAJIV GANDHI INSTITUTE OF MEDICAL SCIENCES, KADAPA), Andhra Pradesh, 516002",
+        "GOVERNMENT MEDICAL COLLEGE KADAPA (FORMERLY RAJIV GANDHI INSTITUTE OF MEDICAL SCIENCES, KADAPA),GOVERNMENT MEDICAL COLLEGE KADAPA (FORMERLY RIMS KADAPA), Andhra Pradesh, 516002"
+      ]
+    },
+    {
+      "id": "cb76ae82dc6e3",
+      "name": "Government Medical College Kannauj , Uttar Pradesh",
+      "addresses": [
+        "Government Medical College Kannauj , Uttar Pradesh,Kannaujmedicalcollege@gmail.com, Uttar Pradesh, 209732",
+        "Government Medical College Kannauj , Uttar Pradesh,Tires, Kannauj, Uttar Pradesh- 209732"
+      ]
+    },
+    {
+      "id": "c7e1df1bc1d17",
+      "name": "GUPTA SURGICAL HOSPITAL, Plot no 117, NARAI BANDH, IMILIYA,MAU, Uttar Pradesh-275101",
+      "addresses": [
+        "GUPTA SURGICAL HOSPITAL, Plot no 117, NARAI BANDH, IMILIYA,MAU, Uttar Pradesh-275101,",
+        "GUPTA SURGICAL HOSPITAL, Plot no 117, NARAI BANDH, IMILIYA,MAU, Uttar Pradesh-275101 , Imlia, Narai Bandh"
+      ]
+    },
+    {
+      "id": "c0a0ea81cedfc",
+      "name": "HLG Memorial Hospital Pvt Ltd, Sen Raleigh Road, Kalyanpur Housing, Asansol , West Bengal-713305",
+      "addresses": [
+        "HLG Memorial Hospital Pvt Ltd, Sen Raleigh Road, Kalyanpur Housing, Asansol , West Bengal-713305,",
+        "HLG Memorial Hospital Pvt Ltd, Sen Raleigh Road, Kalyanpur Housing, Asansol , West Bengal-713305 , Sen Raleigh Road, Kalyanpur Housing"
+      ]
+    },
+    {
+      "id": "c26974062c40d",
+      "name": "HOSMAT Hospital",
+      "addresses": [
+        "HOSMAT Hospital, ,NO.45 MAGRATH ROAD, BANGALORE, Karnataka, 560025",
+        "HOSMAT Hospital, ,NO.45, MAGRATH ROAD, OFF RICHMOND ROAD, BANGALORE, Karnataka, 560025"
+      ]
+    },
+    {
+      "id": "ccde3b50d30d7",
+      "name": "ILS Hospitals, Kunjaban, Agartala, Tripura-799010",
+      "addresses": [
+        "ILS Hospitals, Kunjaban, Agartala, Tripura-799010,",
+        "ILS Hospitals, Kunjaban, Agartala, Tripura-799010,New capital complext, kunjaban, Agartala, Tripura west-799010"
+      ]
+    },
+    {
+      "id": "c3422e6a24f98",
+      "name": "ISHWAR EYE CENTRE LLP, 926, VIJAY PARK JHANG COLONY, ROHTAK, Haryana-124001",
+      "addresses": [
+        "ISHWAR EYE CENTRE LLP, 926, VIJAY PARK JHANG COLONY, ROHTAK, Haryana- 124001,",
+        "ISHWAR EYE CENTRE LLP, 926, VIJAY PARK JHANG COLONY, ROHTAK, Haryana- 124001 , 926- Vijay Park, Jhang Colony, Rohtak"
+      ]
+    },
+    {
+      "id": "ca149acf7748f",
+      "name": "Jaypee Hospital",
+      "addresses": [
+        "Jaypee Hospital,,Max Super Speciality Hospital, Sector 128, Noida, Uttar Pradesh, 201304",
+        "Jaypee Hospital,,sector 128, Noida, Uttar Pradesh, 201304"
+      ]
+    },
+    {
+      "id": "c8de375cfd741",
+      "name": "Jyothis Eye Care, Jyothis Femto Lasik and Cataract Centre Pallikkunnu, Kannur, Kerala-670004",
+      "addresses": [
+        "Jyothis Eye Care, Jyothis Femto Lasik and Cataract Centre Pallikkunnu, Kannur, Kerala-670004 ,",
+        "Jyothis Eye Care, Jyothis Femto Lasik and Cataract Centre Pallikkunnu, Kannur, Kerala-670004,JYOTHIS EYE CARE KANNUR"
+      ]
+    },
+    {
+      "id": "c83a5b5679e43",
+      "name": "Kauvery Hospital, Vadapalani (A unit of Sri Kauvery Medical Care India Limited) No 23/1, Arcot Road, Vadapalani Chennai , Tamil Nadu-600026",
+      "addresses": [
+        "Kauvery Hospital, Vadapalani (A unit of Sri Kauvery Medical Care India Limited) No 23/1, Arcot Road, Vadapalani Chennai , Tamil Nadu-600026,",
+        "Kauvery Hospital, Vadapalani (A unit of Sri Kauvery Medical Care India Limited) No 23/1, Arcot Road, Vadapalani Chennai , Tamil Nadu-600026,No 23/1 Arcot road, Kauvery Hospital, Vadapalani Chennai"
+      ]
+    },
+    {
+      "id": "c2f9324a47685",
+      "name": "KHURANA EYE CENTRE, 139,SUBHASH NAGAR, ROHTAK, Haryana-124001",
+      "addresses": [
+        "KHURANA EYE CENTRE, 139,SUBHASH NAGAR, ROHTAK, Haryana-124001,",
+        "KHURANA EYE CENTRE, 139,SUBHASH NAGAR, ROHTAK, Haryana-124001,139,Subhash Nagar, Rohtak"
+      ]
+    },
+    {
+      "id": "c5c04ca016f09",
+      "name": "KIMS SunShine Hospital (Formerly known as SunShine Hospital), Begumpet, Telangana",
+      "addresses": [
+        "KIMS SunShine Hospital (Formerly known as SunShine Hospital), Begumpet, Telangana,Begumpet, Metro Pillar No.C1327, Hyderabad-500016 Telangana",
+        "KIMS SunShine Hospital (Formerly known as SunShine Hospital), Begumpet, Telangana,KIMS SUNSHINE HOSPITALS Begumpet, Metro Pillar No.C1327 Hyderabad, Telangana 500016, Telangana, 500016"
+      ]
+    },
+    {
+      "id": "cd6b5a20e4332",
+      "name": "Kokilaben Dhirubhai Ambani Hospital, Plot No X8 and X8-1, T.T.C. Industrial Area, MIDC, Thane Belapur Road, Koparkhairane, Navi Mumbai, Maharashtra- 400710",
+      "addresses": [
+        "Kokilaben Dhirubhai Ambani Hospital, Plot No X8 and X8-1, T.T.C. Industrial Area, MIDC, Thane Belapur Road, Koparkhairane, Navi Mumbai, Maharashtra-400710,",
+        "Kokilaben Dhirubhai Ambani Hospital, Plot No X8 and X8-1, T.T.C. Industrial Area, MIDC, Thane Belapur Road, Koparkhairane, Navi Mumbai, Maharashtra-400710 , KOKILABEN DHIRUBHAI AMBANI HOSPITAL ,THANE- BELAPUR ROAD, OPP. KOPARKHAIRANE RAILYWAY STATION, NAVI MUMBAI- 400710"
+      ]
+    },
+    {
+      "id": "c0c4f561f0358",
+      "name": "Maharani Hospital Jagdalpur, Chhattisgarh",
+      "addresses": [
+        "Maharani Hospital Jagdalpur, Chhattisgarh,Dimrapal, Jagdalpur, Chhattisgarh- 494001",
+        "Maharani Hospital, Jagdalpur, Chhattisgarh,NEAR CHANDNI CHOWK JAGDALPUR, Chhattisgarh, 494001"
+      ]
+    },
+    {
+      "id": "c8c630e44311b",
+      "name": "Maharshi Vishwamitra Autonomous State Medical College, RTI Maidan, Ghazipur , Uttar Pradesh- 233001",
+      "addresses": [
+        "Maharshi Vishwamitra Autonomous State Medical College, RTI Maidan, Ghazipur , Uttar Pradesh-233001,",
+        "Maharshi Vishwamitra Autonomous State Medical College, RTI Maidan, Ghazipur , Uttar Pradesh-233001 , RTI Ground, Prakash Nagar, Ghazipur"
+      ]
+    },
+    {
+      "id": "cb718dc78ef4d",
+      "name": "MANAYAWAR KANSHI RAM DISTRCIT COMBINED HOSPITAL AND TRAUMA CENTRE, 100/21A GANDHIGRAM GT ROAD RAMADEVI KANPUR NAGAR, Uttar Pradesh-208007",
+      "addresses": [
+        "MANAYAWAR KANSHI RAM DISTRCIT COMBINED HOSPITAL AND TRAUMA CENTRE, 100/21A GANDHIGRAM GT ROAD RAMADEVI KANPUR NAGAR, Uttar Pradesh-208007,",
+        "MANAYAWAR KANSHI RAM DISTRCIT COMBINED HOSPITAL AND TRAUMA CENTRE, 100/21A GANDHIGRAM GT ROAD RAMADEVI KANPUR NAGAR, Uttar Pradesh-208007 , Manyawar kanshiram district combined hospital &trauma center Ramadevi kanpur Nagar"
+      ]
+    },
+    {
+      "id": "c080391524fe4",
+      "name": "Manipal hospital Hebbal, Kirloskar business park, Bellary road, Hebbal, Bangalore, Karnataka-560024",
+      "addresses": [
+        "Manipal hospital Hebbal, Kirloskar business park, Bellary road, Hebbal, Bangalore, Karnataka-560024,",
+        "Manipal hospital Hebbal, Kirloskar business park, Bellary road, Hebbal, Bangalore, Karnataka-560024,Manipal hospital Hebbal, Kirloskar business park, Bellary road, Hebbal, Bangalore, Karnataka-560024"
+      ]
+    },
+    {
+      "id": "c72a55deb3295",
+      "name": "Manipal Hospital Pvt. Ltd., (Formerly Vikram Hospital) #71/1, Opp. St. Annes College, Millers Road, Bengaluru Karnataka , Karnataka-560052",
+      "addresses": [
+        "Manipal Hospital Pvt. Ltd., (Formerly Vikram Hospital) #71/1, Opp. St. Annes College, Millers Road, Bengaluru Karnataka , Karnataka-560052,",
+        "Manipal Hospital Pvt. Ltd., (Formerly Vikram Hospital) #71/1, Opp. St. Annes College, Millers Road, Bengaluru Karnataka , Karnataka-560052,71/1, Millers Rd, opp. to St. Anne's College, Vasanth Nagar"
+      ]
+    },
+    {
+      "id": "c1c10fb26181a",
+      "name": "Medhansh Hospital, Opp. Nakpur Sugar Mill, Aonla Bus Stand, Budaun Road, Bareilly, Uttar Pradesh-243001",
+      "addresses": [
+        "Medhansh Hospital, Opp. Nakpur Sugar Mill, Aonla Bus Stand, Budaun Road, Bareilly, Uttar Pradesh-243001,",
+        "Medhansh Hospital, Opp. Nakpur Sugar Mill, Aonla Bus Stand, Budaun Road, Bareilly, Uttar Pradesh-243001,Bus Stand, Baduan Road Aonla, opp. Sugar Mill, Kargaina, Uttar Pradesh 243001"
+      ]
+    },
+    {
+      "id": "cc6b4e509c22a",
+      "name": "Medical College Kolkata",
+      "addresses": [
+        "Medical College Kolkata,88 COLLEGE STREET KOLKATA 700073, West Bengal, 700073",
+        "MEDICAL COLLEGE, KOLKATA,MEDICAL COLLEGE, KOLKATA, West Bengal, 700073"
+      ]
+    },
+    {
+      "id": "c0b3e92d1558b",
+      "name": "MEDITRINA INSTITUTE OF MEDICAL SCIENCES, 278, CENTRAL BAZAAR ROAD, RAMDASPETH, NAGPUR, Maharashtra-440010",
+      "addresses": [
+        "MEDITRINA INSTITUTE OF MEDICAL SCIENCES, 278, CENTRAL BAZAAR ROAD, RAMDASPETH, NAGPUR, Maharashtra-440010,",
+        "MEDITRINA INSTITUTE OF MEDICAL SCIENCES, 278, CENTRAL BAZAAR ROAD, RAMDASPETH, NAGPUR, Maharashtra-440010 , 278 Central Bazar Road, Ramdaspeth Nagpur"
+      ]
+    },
+    {
+      "id": "c5db1736d3477",
+      "name": "Metro Hospital and Cancer Institute, 21-22, Community Centre, Preet Vihar, Delhi-, Delhi-110092",
+      "addresses": [
+        "Metro Hospital and Cancer Institute, 21-22, Community Centre, Preet Vihar, Delhi-, Delhi-110092,",
+        "Metro Hospital and Cancer Institute, 21-22, Community Centre, Preet Vihar, Delhi-, Delhi-110092 , METRO HOSPITAL AND CANCER INSTITUTE 21, COMMUNITY CENTER PREET VIHAR DELHI"
+      ]
+    },
+    {
+      "id": "c5121c0e4f6cc",
+      "name": "MOTHERCARE AND HEALTH CENTRE PVT.LTD, VATTAMBALAM, KUMARAMPUTHUR, MANNARKKAD, PALAKKAD, Kerala-678583",
+      "addresses": [
+        "MOTHERCARE AND HEALTH CENTRE PVT.LTD, VATTAMBALAM, KUMARAMPUTHUR, MANNARKKAD, PALAKKAD, Kerala-678583,",
+        "MOTHERCARE AND HEALTH CENTRE PVT.LTD, VATTAMBALAM, KUMARAMPUTHUR, MANNARKKAD, PALAKKAD, Kerala-678583 , MOTHERCARE AND HEALTH CENTRE PRIVATE LIMITED, VATTAMBALAM, MANNARKAD"
+      ]
+    },
+    {
+      "id": "ceb7707570054",
+      "name": "M/s ASHIRWAD MULTI SPECIALITY HOSPITAL, B 38/1-A-1, Birdopur, Mahmoorganj, District- Varanasi , Uttar Pradesh- 221010",
+      "addresses": [
+        "M/s ASHIRWAD MULTI SPECIALITY HOSPITAL, B 38/1-A-1, Birdopur, Mahmoorganj, District-Varanasi , Uttar Pradesh-221010,",
+        "M/s ASHIRWAD MULTI SPECIALITY HOSPITAL, B 38/1-A-1, Birdopur, Mahmoorganj, District-Varanasi , Uttar Pradesh-221010 , B-38, 1-C, Usha Gupta Ln, Birdopur, Mahmoorganj, Varanasi, Uttar Pradesh 221010"
+      ]
+    },
+    {
+      "id": "c1a84245044f8",
+      "name": "Omega Hospitals (A Unit Hyderabad Institute of Oncology Private Limited), S.Y.No.18P,Seven Hill Colony, Road No.-1, Gachibowli, Serilingampally, Ranga Reddy, Telangana-500032",
+      "addresses": [
+        "Omega Hospitals (A Unit Hyderabad Institute of Oncology Private Limited), S.Y.No.18P,Seven Hill Colony, Road No.-1, Gachibowli, Serilingampally, Ranga Reddy, Telangana-500032,",
+        "Omega Hospitals (A Unit Hyderabad Institute of Oncology Private Limited), S.Y.No.18P,Seven Hill Colony, Road No.-1, Gachibowli, Serilingampally, Ranga Reddy, Telangana-500032 , S.Y.NO 18P, Seven Hill Colony, Road No 1, Gachibowli, Serilingampally, Rangareddy, Telangana."
+      ]
+    },
+    {
+      "id": "cce49b07340f5",
+      "name": "Paras Hospitals, Plot no. H-2, HSIIDC, Technology Park, Near Nada Sahib Gurudwara Sec. 22 Panchkula, Haryana- 134109",
+      "addresses": [
+        "Paras Hospitals, Plot no. H-2, HSIIDC, Technology Park, Near Nada Sahib Gurudwara Sec. 22 Panchkula, Haryana-134109 ,",
+        "Paras Hospitals, Plot no. H-2, HSIIDC, Technology Park, Near Nada Sahib Gurudwara Sec. 22 Panchkula, Haryana- 134109,Paras Hospitals, Plot no 2, HSIIDC, Near Nada Sahib Gurudwara, Panchkula, Haryana"
+      ]
+    },
+    {
+      "id": "ce2a77325d2cb",
+      "name": "Shaheed Hasan Khan Mewati Government Medical College",
+      "addresses": [
+        "Shaheed Hasan Khan Mewati Government Medical College,Shaheed Hasan Khan Mewati Government Medical College, Haryana, 122107",
+        "Shaheed Hasan Khan Mewati Government Medical College , ,Shaheed Hasan Khan Mewati Government Medical College Nalhar Nuh, Haryana, 122107"
+      ]
+    },
+    {
+      "id": "c7ab7fc43cdf7",
+      "name": "Shalby Hospital",
+      "addresses": [
+        "Shalby Hospital, ,8TH Floor, shalby hopsital , opp. karnwati club, sg highway ahmedabad, Gujarat, 380015",
+        "Shalby Hospital, ,DNB Program, Basement 2, Shalby hopsital , Opp. karnwati club, S. G. Highway Ahmedabad - 380015, Gujarat, 380015"
+      ]
+    },
+    {
+      "id": "c708cb58732ab",
+      "name": "Shalby Hospital, Near Navyug College, Rander Road, Surat, Gujarat-395009",
+      "addresses": [
+        "Shalby Hospital, Near Navyug College, Rander Road, Surat, Gujarat-395009,",
+        "Shalby Hospital, Near Navyug College, Rander Road, Surat, Gujarat-395009,SHALBY MULTI SPECILATY HOSPITAL, NEAR NAVYUG COLLEGE, RANDER ROAD, ADAJAN, SURAT"
+      ]
+    },
+    {
+      "id": "c65a0accd0434",
+      "name": "Shree Aggarsain International Hospital, P.S.P, Sector 22, Rohini, Delhi-110086",
+      "addresses": [
+        "Shree Aggarsain International Hospital, P.S.P, Sector 22, Rohini, Delhi-110086,",
+        "Shree Aggarsain International Hospital, P.S.P, Sector 22, Rohini, Delhi-110086 , PSP Aman Vihar, Sector- 22,Rohini,Delhi-110086"
+      ]
+    },
+    {
+      "id": "c2c96a1ddac70",
+      "name": "Shree Narayan Eye Hospital, At : Tajpura, Halol, Dist : Panchmahal, Gujarat-389350",
+      "addresses": [
+        "Shree Narayan Eye Hospital, At : Tajpura, Halol, Dist : Panchmahal, Gujarat-389350,",
+        "Shree Narayan Eye Hospital, At : Tajpura, Halol, Dist : Panchmahal, Gujarat-389350,shree narayan eye hospital tajpura ta. halol dist. panchmahal gujarat"
+      ]
+    },
+    {
+      "id": "c6164b49b4da0",
+      "name": "SLG Hospitals, Hyderabad Sy. No 306, Nizampet Road Bachupally, Medchal Dist Telangana , Telangana-500090",
+      "addresses": [
+        "SLG Hospitals, Hyderabad Sy. No 306, Nizampet Road Bachupally, Medchal Dist Telangana , Telangana-500090,",
+        "SLG Hospitals, Hyderabad Sy. No 306, Nizampet Road Bachupally, Medchal Dist Telangana , Telangana- 500090,SLG Circle, Krishnaja Hills, Nizampet, Hyderabad"
+      ]
+    },
+    {
+      "id": "c9fdb40da39ec",
+      "name": "Sri Sri Holistic Hospital, #1-2-49/13b, Nizampet Road, Hydernagar, Kukatpally, Medchal, Telangana-500072",
+      "addresses": [
+        "Sri Sri Holistic Hospital, #1-2-49/13b, Nizampet Road, Hydernagar, Kukatpally, Medchal, Telangana-500072,",
+        "Sri Sri Holistic Hospital, #1-2- 49/13b, Nizampet Road, Hydernagar, Kukatpally, Medchal, Telangana-500072 , Sri Sri holistic hospital, Nizampet, hyderabad"
+      ]
+    },
+    {
+      "id": "ca27086f0a288",
+      "name": "SSB HEART AND MULTISPECIALITY HOSPITAL, SECTOR 20A, FARIDABAD, Haryana- 121001",
+      "addresses": [
+        "SSB HEART AND MULTISPECIALITY HOSPITAL, SECTOR 20A, FARIDABAD, Haryana-121001,",
+        "SSB HEART AND MULTISPECIALITY HOSPITAL, SECTOR 20A, FARIDABAD, Haryana-121001 , SSB Heart and Multispeciality Hospital, Plot, No. 69, Mathura Road, Near Neelam Flyover, Sector 20A"
+      ]
+    },
+    {
+      "id": "cdf60a6b1f004",
+      "name": "Symbiosis Medical College for Women",
+      "addresses": [
+        "Symbiosis Medical College for Women,Lavale, Mulshi, Pune - 412115, Maharashtra, India",
+        "Symbiosis Medical College for Women , Lavale, Mulshi, Pune - 412115, Maharashtra, India (Female Seat only )"
+      ]
+    },
+    {
+      "id": "cf4e9f91450da",
+      "name": "UDAY HOSPITAL, Dno:55-243/5,Mangalagiri Road,Autonagar,Guntur , Andhra Pradesh-522001",
+      "addresses": [
+        "UDAY HOSPITAL, Dno:55-243/5,Mangalagiri Road,Autonagar,Guntur , Andhra Pradesh- 522001,",
+        "UDAY HOSPITAL, Dno:55- 243/5,Mangalagiri Road,Autonagar,Guntur , Andhra Pradesh-522001 , Uday Hospital Guntur-522001"
+      ]
+    },
+    {
+      "id": "c709d2fbcdc33",
+      "name": "Utkal Institute of Medical Sciences and Hospital, Orissa",
+      "addresses": [
+        "Utkal Institute of Medical Sciences and Hospital, Orissa,C-3, Niladri Vihar, Chandrashekharpur, Bhubaneswar, Dist-Khorda-751021 Odisha",
+        "Utkal Institute of Medical Sciences and Hospital, Orissa,Utkal Institute of Medical sciences and Hospital,A unit of UHPL,C- 3,Niladri Vihar,Bhubaneswar, Odisha, 751021"
+      ]
+    },
+    {
+      "id": "c6933614a3091",
+      "name": "Virinchi Hospital, Door No. 6- 3-2,3 and 3/1 Road No 1, Banjara Hills, Virinchi Circle, Hyderabad, Telangana- 500034",
+      "addresses": [
+        "Virinchi Hospital, Door No. 6-3- 2,3 and 3/1 Road No 1, Banjara Hills, Virinchi Circle, Hyderabad, Telangana-500034 ,",
+        "Virinchi Hospital, Door No. 6-3-2,3 and 3/1 Road No 1, Banjara Hills, Virinchi Circle, Hyderabad, Telangana- 500034,Virinchi Hospital, Door No. 6-3-2,3 and 3/1 Road No 1, Banjara Hills, Virinchi Circle, Hyderabad, Telangana- 500034"
+      ]
+    },
+    {
+      "id": "c1004fb7d40f7",
+      "name": "Yashoda Health Care Services Private Limited, D.No: 2-41/14/Yashoda/GF, Sy No,41/14, Khanamet Village, Serilingampally(M), Hyderabad, Telangana- 500084",
+      "addresses": [
+        "Yashoda Health Care Services Private Limited, D.No: 2-41/14/Yashoda/GF, Sy No,41/14, Khanamet Village, Serilingampally(M), Hyderabad, Telangana-500084,",
+        "Yashoda Health Care Services Private Limited, D.No: 2- 41/14/Yashoda/GF, Sy No,41/14, Khanamet Village, Serilingampally(M), Hyderabad, Telangana-500084 , Hitech City, Hyderabad, Telangana State"
+      ]
+    }
+  ],
+  "sameNameDifferentAddress": [
+    [
+      "c1f25e5b0ca78",
+      "c4addb90d7265"
+    ],
+    [
+      "c664f1415def2",
+      "c3f1414df267f"
+    ],
+    [
+      "c398ac91d8443",
+      "c1755275563bf"
+    ],
+    [
+      "c4c19ae18bb6d",
+      "c17cc55bfb57b"
+    ],
+    [
+      "c8182ed991196",
+      "cfcb02a186238",
+      "ccccece76f569",
+      "cb5a9cabf895b"
+    ],
+    [
+      "c3791d4c97ae1",
+      "c49ec18177f67"
+    ],
+    [
+      "cffbbe61a187e",
+      "ca879f63f5dcb"
+    ],
+    [
+      "c5d51fc6e1f48",
+      "cb240d63100a7"
+    ],
+    [
+      "cd1cb5c16f113",
+      "c3cff84fe9eb5",
+      "c10951c4c3157"
+    ],
+    [
+      "c48a2fbe56a29",
+      "c2c8269c3aa4b",
+      "c0349eba4d1c8",
+      "cb7fde3489469"
+    ],
+    [
+      "c2cff752b34f3",
+      "c723b99514555"
+    ],
+    [
+      "c84bbf326cdf5",
+      "c5092fce2774c"
+    ],
+    [
+      "cd43f9cf4b009",
+      "cf15764fc4479"
+    ],
+    [
+      "c05f01757e6e3",
+      "c69b99cb95587"
+    ],
+    [
+      "cbe5aae2d8059",
+      "cc26ddcccb9f7",
+      "c707fd5fe61c3"
+    ],
+    [
+      "cd508e199944c",
+      "c2c444e489b12",
+      "c1e54dbfcd900",
+      "c4fe82bac76da",
+      "ccac2396f6167"
+    ],
+    [
+      "c68fd1f324013",
+      "cb07fd3d04fb7",
+      "ccec79a546f80"
+    ],
+    [
+      "c2eaeec0a1efa",
+      "cbe4647878451",
+      "cdd901aac0af9"
+    ],
+    [
+      "caf764a0ffa63",
+      "c839142bc45fc",
+      "cda922268866b",
+      "c000a12190da5",
+      "cead9948a94b4",
+      "c194d3635dfc5"
+    ],
+    [
+      "c10b78b2c9992",
+      "c42d49f51067c",
+      "c17b691a1e7ab"
+    ],
+    [
+      "c17bcb323a7f2",
+      "ce74d6ec85586",
+      "cf53377b65165"
+    ],
+    [
+      "c248c8074c029",
+      "cfe5e13ddd85e"
+    ],
+    [
+      "c7b2592c55daf",
+      "c415d49cd0df7"
+    ],
+    [
+      "c081897da40de",
+      "ce470cd9df162"
+    ],
+    [
+      "cee234600a666",
+      "c1bab68d0d80b",
+      "c24498885a60d",
+      "c735e33e6a4b9"
+    ],
+    [
+      "c9d074bb35668",
+      "ca309fb97249e"
+    ],
+    [
+      "cf86921acaf24",
+      "c7809b0129440"
+    ],
+    [
+      "cb52f47afb68c",
+      "c0b8f5bd18500",
+      "c31aa66d49e05"
+    ],
+    [
+      "c3e4ac0a3e718",
+      "cf2eb239d0dbe",
+      "cfeac871b0059"
+    ],
+    [
+      "cab166ec3908e",
+      "cc9f2bef80e14",
+      "c8ede9aebc8ad",
+      "c0510e2eb3f65"
+    ],
+    [
+      "c867859c23084",
+      "c989f9e5c2143",
+      "c9ea9be805017"
+    ],
+    [
+      "ca8ac507267df",
+      "ca6ba29dd18db"
+    ],
+    [
+      "c1885bda16e5b",
+      "ccc8507dfc51a",
+      "c9226a1ab8683",
+      "ce36205e112fe",
+      "cdefd6b29f99c",
+      "cd389a1c748b9",
+      "c1cf292a0eec9"
+    ],
+    [
+      "c33694e2fce14",
+      "c82169c8b5d57"
+    ],
+    [
+      "ce816a95d428c",
+      "c48e570e4e59b"
+    ],
+    [
+      "cd8d2252c3cf9",
+      "c515246b4c603"
+    ],
+    [
+      "cc8526d5d01cd",
+      "c58562ffffb69"
+    ],
+    [
+      "c955ec8b51ef6",
+      "c54d08bde8f7a"
+    ],
+    [
+      "cad324707aabd",
+      "c5c2b49b662af"
+    ],
+    [
+      "cc80ec65bac2a",
+      "cd25feaab95fe"
+    ],
+    [
+      "cee232a95c618",
+      "cf6804ee70fe8"
+    ],
+    [
+      "c412bc861574e",
+      "c4b818554ee5d"
+    ],
+    [
+      "cee397c921c92",
+      "cfe4762c47133"
+    ],
+    [
+      "c64c2bf10f9dd",
+      "cd02934650498"
+    ],
+    [
+      "c9df955a832bf",
+      "c51fb5a324561"
+    ],
+    [
+      "ccbd5f3bcfdbb",
+      "ce3824da33791"
+    ],
+    [
+      "cf02de66fe6db",
+      "c1c64fa694a74"
+    ],
+    [
+      "c2ee0b54778f2",
+      "c39433f3941ff"
+    ],
+    [
+      "cdbf808ff9925",
+      "ca859cbaf0f8f"
+    ]
+  ]
+}
