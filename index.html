@@ -7,10 +7,10 @@
   <meta name="description" content="Explore NEET PG closing ranks by college, course, state and counselling round for 2024 and 2025.">
   <title>NEET PG · Cutoff Explorer</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=quota-multiselect-1">
   <script defer src="data/cutoffs.js"></script>
-  <script defer src="core.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="core.js?v=quota-multiselect-1"></script>
+  <script defer src="app.js?v=quota-multiselect-1"></script>
 </head>
 <body>
   <a class="skip-link" href="#results">Skip to results</a>
@@ -29,7 +29,15 @@
         <div id="state-panel" class="view-panel" hidden><div class="field"><label for="state">State / union territory</label><select id="state"></select></div><label class="field-label" for="branch-search">Branches / courses</label><div id="branch-picker"></div><p class="field-help">Choose one or more. Leave empty to see all branches.</p></div>
         <div class="filter-divider"></div>
         <div class="field"><label for="category">Allotted category</label><select id="category"></select><p class="field-help">The category of the allotted seat.</p></div>
-        <div class="field"><label for="quota">Allotment quota</label><select id="quota"></select></div>
+        <div class="field quota-field">
+          <span class="field-label" id="quota-label">Allotment quota</span>
+          <details id="quota-picker" class="quota-picker">
+            <summary id="quota-summary" aria-labelledby="quota-label quota-selection" aria-describedby="quota-help"><span id="quota-selection">All quotas</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary>
+            <div class="quota-actions"><button type="button" id="quota-all" class="text-button">Select all</button><button type="button" id="quota-clear" class="text-button">Clear selection</button></div>
+            <div id="quota-options" class="quota-options" role="group" aria-labelledby="quota-label"></div>
+          </details>
+          <p class="field-help" id="quota-help">Select one or more. Each quota stays in a separate row.</p>
+        </div>
         <div class="field"><label for="metric">Show in round columns</label><select id="metric"><option value="closing">Closing rank</option><option value="range">Opening – closing rank</option><option value="count">Allotment count</option></select></div>
         <div class="help-card"><span class="info-icon" aria-hidden="true">i</span><div><strong>Reading a cutoff</strong><p>Closing rank is the highest rank allotted in that round. A smaller rank means a more competitive cutoff.</p></div></div>
       </aside>

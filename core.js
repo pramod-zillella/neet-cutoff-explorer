@@ -5,11 +5,12 @@
   function query(data, filters) {
     const collegeIds = new Set(filters.colleges || []);
     const branchIds = new Set(filters.branches || []);
+    const quotas = new Set(filters.quotas ?? data.quotas);
     const grouped = new Map();
     for (const row of data.rows) {
       const [year, round, ci, bi, qi, ki, opening, closing, count] = row;
       if (year !== Number(filters.year)) continue;
-      if (filters.quota !== ALL && data.quotas[qi] !== filters.quota) continue;
+      if (!quotas.has(data.quotas[qi])) continue;
       if (filters.category !== ALL && data.categories[ki] !== filters.category) continue;
       const college = data.colleges[ci], branch = data.branches[bi];
       if (filters.view === "college" && college.id !== filters.college) continue;

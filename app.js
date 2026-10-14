@@ -16,7 +16,7 @@
   const defaultCollege = data.colleges.find(c => /osmania/i.test(c.name)) || data.colleges[0];
   const defaultBranch = data.branches.find(b => b.name === "MD · General Medicine") || data.branches[0];
   const comparison = [defaultCollege, data.colleges.find(c => /gandhi medical college/i.test(c.name) && c.state === defaultCollege.state), data.colleges.find(c => /kakatiya medical/i.test(c.name))].filter(Boolean).map(c => c.id);
-  const defaults = () => ({view:"college", year:data.years[0], college:defaultCollege.id, colleges:comparison.slice(), branch:defaultBranch.id, state:defaultCollege.state, branches:[defaultBranch.id], quota:"all", category:"Open", metric:"closing", search:"", sort:"name", direction:"asc"});
+  const defaults = () => ({view:"college", year:data.years[0], college:defaultCollege.id, colleges:comparison.slice(), branch:defaultBranch.id, state:defaultCollege.state, branches:[defaultBranch.id], quotas:data.quotas.slice(), category:"Open", metric:"closing", search:"", sort:"name", direction:"asc"});
   let filters = defaults(), page = 1, rows = [], toastTimer;
   const pageSize = 40;
   const available = new Map(data.years.map(year => [year, {colleges:new Set(), branches:new Set()}]));
@@ -33,7 +33,10 @@
     if (branches.has(params.get("branch"))) next.branch = params.get("branch");
     if (params.has("branches")) next.branches = [...new Set(params.get("branches").split(","))].filter(id => branches.has(id));
     if (["all", ...states].includes(params.get("state"))) next.state = params.get("state");
-    for (const [name, allowed] of [["quota", data.quotas], ["category", data.categories]]) if (["all", ...allowed].includes(params.get(name))) next[name] = params.get(name);
+    // Repeated quota parameters support multiple selections and existing single-quota links.
+    const requestedQuotas = params.getAll("quota");
+    if (params.has("quota") && !requestedQuotas.includes("all")) next.quotas = data.quotas.filter(quota => requestedQuotas.includes(quota));
+    if (["all", ...data.categories].includes(params.get("category"))) next.category = params.get("category");
     if (["closing", "range", "count"].includes(params.get("metric"))) next.metric = params.get("metric");
     if (["name", "round0", "round1", "round2", "round3"].includes(params.get("sort"))) next.sort = params.get("sort");
     if (["asc", "desc"].includes(params.get("direction"))) next.direction = params.get("direction");
@@ -42,7 +45,10 @@
   }
   function writeHash() {
     const params = new URLSearchParams();
-    for (const name of ["view", "year", "category", "quota", "metric", "sort", "direction"]) params.set(name, filters[name]);
+    for (const name of ["view", "year", "category", "metric", "sort", "direction"]) params.set(name, filters[name]);
+    if (filters.quotas.length === data.quotas.length) params.set("quota", "all");
+    else if (!filters.quotas.length) params.set("quota", "none");
+    else for (const quota of filters.quotas) params.append("quota", quota);
     if (filters.view === "college") params.set("college", filters.college);
     if (filters.view === "compare") {params.set("colleges", filters.colleges.join(",")); params.set("branch", filters.branch);}
     if (filters.view === "state") {params.set("state", filters.state); params.set("branches", filters.branches.join(","));}
@@ -117,10 +123,28 @@
   const collegePicker = new Picker("college-picker", "college-search", "Find a college…", false, yearColleges, () => [filters.college], selected => change("college", selected[0]));
   const comparePicker = new Picker("compare-picker", "compare-search", "Add a college…", true, yearColleges, () => filters.colleges, selected => change("colleges", selected));
   const branchPicker = new Picker("branch-picker", "branch-search", "Find a branch…", true, yearBranches, () => filters.branches, selected => change("branches", selected));
+  $("quota-options").innerHTML = data.quotas.map(quota => `<label class="picker-option"><input type="checkbox" name="quota" value="${escape(quota)}"><span>${escape(quota)}</span></label>`).join("");
+  function syncQuotas() {
+    const selected = new Set(filters.quotas);
+    $("quota-selection").textContent = selected.size === data.quotas.length ? "All quotas" : !selected.size ? "Choose quotas" : selected.size === 1 ? filters.quotas[0] : `${selected.size} quotas selected`;
+    for (const input of $("quota-options").querySelectorAll("input")) {
+      input.checked = selected.has(input.value);
+      input.closest("label").classList.toggle("selected", input.checked);
+    }
+  }
+  $("quota-options").addEventListener("change", () => change("quotas", [...$("quota-options").querySelectorAll("input:checked")].map(input => input.value)));
+  $("quota-all").addEventListener("click", () => change("quotas", data.quotas.slice()));
+  $("quota-clear").addEventListener("click", () => change("quotas", []));
+  $("quota-picker").addEventListener("keydown", event => {
+    if (event.key === "Escape") {$("quota-picker").open = false; $("quota-summary").focus();}
+  });
+  document.addEventListener("click", event => {
+    if (!$("quota-picker").contains(event.target)) $("quota-picker").open = false;
+  });
   function syncControls() {
     options("year", data.years, filters.year);
     options("category", data.categories, filters.category, "All categories (separate rows)");
-    options("quota", data.quotas, filters.quota, "All quotas (separate rows)");
+    syncQuotas();
     options("state", states, filters.state, "All states / union territories");
     options("compare-branch", data.branches, filters.branch);
     $("metric").value = filters.metric; $("result-search").value = filters.search;
@@ -136,6 +160,7 @@
     filters[name] = value; page = 1;
     if (name === "view") {filters.search = ""; filters.sort = "name"; filters.direction = "asc";}
     if (["year", "view"].includes(name)) syncControls();
+    if (name === "quotas") syncQuotas();
     render();
   }
   function render() {
@@ -147,10 +172,11 @@
     const headings = {college:["COLLEGE OVERVIEW", selectedCollege?.name || "Choose a college", selectedCollege?.address || "Select an institution to view all courses."], compare:["COLLEGE COMPARISON", branches.get(filters.branch)?.name || "Compare colleges", `${filters.colleges.length} selected colleges · ${filters.year} round-by-round cutoffs`], state:["EXPLORE A STATE", filters.state === "all" ? "All states & union territories" : filters.state, `${filters.branches.length ? filters.branches.map(id => branches.get(id)?.name).filter(Boolean).join(" · ") : "All branches / courses"} · ${filters.year}`]};
     const [eyebrow, title, description] = headings[filters.view];
     $("results-eyebrow").textContent = eyebrow; $("results-title").textContent = title; $("results-description").textContent = description;
-    $("active-filters").innerHTML = `<span class="filter-pill year">${filters.year}</span>` + [filters.category === "all" ? "All categories" : filters.category, filters.quota === "all" ? "All quotas" : filters.quota, {closing:"Closing rank",range:"Opening – closing",count:"Allotment count"}[filters.metric]].map(value => `<span class="filter-pill">${escape(value)}</span>`).join("");
+    const quotaLabels = filters.quotas.length === data.quotas.length ? ["All quotas"] : filters.quotas.length ? filters.quotas : ["No quotas selected"];
+    $("active-filters").innerHTML = `<span class="filter-pill year">${filters.year}</span>` + [filters.category === "all" ? "All categories" : filters.category, ...quotaLabels, {closing:"Closing rank",range:"Opening – closing",count:"Allotment count"}[filters.metric]].map(value => `<span class="filter-pill">${escape(value)}</span>`).join("");
     $("export").disabled = !rows.length;
     $("empty").hidden = Boolean(rows.length); $("table-container").hidden = !rows.length;
-    $("empty-message").textContent = filters.view === "compare" && !filters.colleges.length ? "Choose at least one college in the filters to start comparing." : "No allotments match these selections in " + filters.year + ". Try all quotas, another allotted category, or a different course. Some institutions appear under separate source addresses.";
+    $("empty-message").textContent = !filters.quotas.length ? "Choose at least one allotment quota, or use Select all to include every quota." : filters.view === "compare" && !filters.colleges.length ? "Choose at least one college in the filters to start comparing." : "No allotments match these selections in " + filters.year + ". Try all quotas, another allotted category, or a different course. Some institutions appear under separate source addresses.";
     $("clear-result-search").hidden = !filters.search;
     const totalPages = Math.max(1, Math.ceil(rows.length / pageSize)); page = Math.min(page, totalPages);
     const start = (page - 1) * pageSize;
@@ -174,7 +200,7 @@
     $("previous").disabled = page <= 1; $("next").disabled = page >= totalPages;
     writeHash();
   }
-  for (const [id, name] of [["year","year"],["category","category"],["quota","quota"],["state","state"],["metric","metric"],["compare-branch","branch"]]) $(id).addEventListener("change", event => change(name, id === "year" ? Number(event.target.value) : event.target.value));
+  for (const [id, name] of [["year","year"],["category","category"],["state","state"],["metric","metric"],["compare-branch","branch"]]) $(id).addEventListener("change", event => change(name, id === "year" ? Number(event.target.value) : event.target.value));
   for (const button of document.querySelectorAll("[data-view]")) button.addEventListener("click", () => change("view", button.dataset.view));
   $("result-search").addEventListener("input", event => change("search", event.target.value));
   $("clear-result-search").addEventListener("click", () => {$("result-search").value = ""; change("search", "");});
